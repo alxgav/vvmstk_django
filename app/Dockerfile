@@ -27,13 +27,13 @@ RUN pip install -r requirements.txt
 RUN apk del .tmp-build-deps
 
 # copy entrypoint.sh
-COPY ./entrypoint.sh .
+COPY ./entrypoint.sh app/web/entrypoint.sh
 # RUN sed -i 's/\r$//g' /app/web/entrypoint.sh
-# RUN chmod +x /app/web/entrypoint.sh
+RUN chmod +x app/web/entrypoint.sh
 
 # copy project
 COPY . .
 
 # run entrypoint.sh
-# ENTRYPOINT ["/app/web/entrypoint.sh"]
-RUN ["chmod", "+x", "/app/web/entrypoint.sh"]
+ENTRYPOINT ["app/web/entrypoint.sh"]
+# RUN ["chmod", "+x", "/app/web/entrypoint.sh"]
