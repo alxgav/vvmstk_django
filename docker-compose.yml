@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    command: gunicorn config.wsgi:application --bind 0.0.0.0:8000 --reload
+    volumes:
+      - static_volume:/app/web/staticfiles
+    # expose:
+    #  - 8000
+    env_file:
+      - ./.env.dev
+    depends_on:
+      - db
+  db:
+    image: postgres:14.0-alpine
+    volumes:
+      - pgdata_volume:/var/lib/postgresql/data/
+    env_file:
+      - ./.env.dev
+  nginx:
+    build: ./nginx
+    volumes:
+      - static_volume:/app/web/staticfiles
+    ports:
+      - "80:80"
+    depends_on:
+      - web
+volumes:
+    static_volume:
+    pgdata_volume:
