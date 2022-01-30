@@ -1,2 +1,2 @@
 # vvmstk_django
-students app for drive school
+Учет студентов в автомобильной школе

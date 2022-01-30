@@ -1,6 +1,6 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
-# if [ "$DATABASE" = "vvmstk_db" ]
+# if [ "$SQL_DATABASE" = "vvmstk_db" ]
 # then
 #     echo "Waiting for postgres..."
 
