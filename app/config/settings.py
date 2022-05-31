@@ -10,15 +10,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
-# SECRET_KEY = 'django-insecure-jbq@#!hm=v4ubfx1ubh-ng_tiw1dkm&ryl&f+gu^g5qlt*fhoh'
+# SECRET_KEY = os.environ.get('SECRET_KEY') # for deploy
+SECRET_KEY = 'django-insecure-jbq@#!hm=v4ubfx1ubh-ng_tiw1dkm&ryl&f+gu^g5qlt*fhoh'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
-# DEBUG = True
+# DEBUG = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ") # for deploy
+DEBUG = True
 
-# ALLOWED_HOSTS = []
-ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
+ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ") # for deploy
 
 # Application definition
 
@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'vvmstk',
+    'rest_framework', # add drf
 ]
 
 MIDDLEWARE = [
@@ -66,16 +67,31 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# for deploy
+# DATABASES = {
+#     "default": {
+#         "ENGINE": os.environ.get("SQL_ENGINE"),
+#         "NAME": os.environ.get("SQL_DATABASE"),
+#         "USER": os.environ.get("SQL_USER"),
+#         "PASSWORD": os.environ.get("SQL_PASSWORD"),
+#         "HOST": os.environ.get("SQL_HOST"),
+#         "PORT": os.environ.get("SQL_PORT"),
+#         'OPTIONS': {
+#            'options': '-c search_path=public,vv_data'
+#         }
+#     }
+# }
+
 DATABASES = {
     "default": {
-        "ENGINE": os.environ.get("SQL_ENGINE"),
-        "NAME": os.environ.get("SQL_DATABASE"),
-        "USER": os.environ.get("SQL_USER"),
-        "PASSWORD": os.environ.get("SQL_PASSWORD"),
-        "HOST": os.environ.get("SQL_HOST"),
-        "PORT": os.environ.get("SQL_PORT"),
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "vvmstk_database",
+        "USER": "root",
+        "PASSWORD": "123qwe",
+        "HOST": "localhost",
+        "PORT": "5432",
         'OPTIONS': {
-           'options': '-c search_path=public,vv_data'
+           'options': '-c search_path=public,content'
         }
     }
 }
