@@ -40,5 +40,6 @@ button {
     visibility: visible !important;
     height: calc(100% - var(--topNavbarHeight));
     top: var(--topNavbarHeight);
+    
   }
 }
