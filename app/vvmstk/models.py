@@ -21,7 +21,7 @@ class Groups_students(TimeStampedModel):
         ('C', 'C')
     ]
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
-    group_name = models.CharField(_('group number'), max_length=4)
+    group_name = models.CharField(_('group_number'), max_length=4)
     group_date_begin = models.DateField(_('start date'), blank=False)
     group_date_end = models.DateField(_('end date'), blank=False)
     kategory = models.CharField(_('drive kategory'), max_length=52, choices=KATEGORY_CHOOSER)

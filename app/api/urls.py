@@ -9,3 +9,5 @@ urlpatterns = [
     path('group-update/<str:pk>/', views.groupUpdate, name='update group'),
     path('group-delete/<str:pk>/', views.groupDelete, name='delete group'),
 ]
+
+
