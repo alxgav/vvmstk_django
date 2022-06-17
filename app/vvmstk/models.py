@@ -29,7 +29,7 @@ class Groups_students(TimeStampedModel):
     time_study = models.DecimalField(_('learning time'), max_digits=5, decimal_places=1, blank=False)
 
     def __str__(self):
-        return f'{_("Group number ")}{self.group_name} kategory {self.kategory}' 
+        return f'{self.group_name}' 
 
     class Meta:
         verbose_name = _('groups of students')

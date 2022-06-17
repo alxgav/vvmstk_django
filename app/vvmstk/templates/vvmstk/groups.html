@@ -12,24 +12,26 @@
         <div class="row ">
           {% for group in groups  %}
           <div class="col-md-3 mb-3">
-            <div class="card text-dark bg-light" style="width: 18rem;">
-              <div class="card-body py-5">
-                <h5 class="card-title">Group {{ group.group_name }} kategory "{{ group.kategory }}"</h5>
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">Date begin : {{ group.group_date_begin|date:"d.m.Y" }}</li>
-                <li class="list-group-item">Date end : {{ group.group_date_end|date:"d.m.Y" }}</li>
-                <li class="list-group-item">price : {{ group.price }} UAH</li>
-                <li class="list-group-item">Time learning : {{ group.time_study }} h</li>
-              </ul>
-              <div class="card-footer d-flex ">
-                <span class="ms-auto"> View Details </span>
-                <span class="ms-auto">
-                  <a href="#" class="card-link"><i class="bi bi-chevron-right "></i></a>
-                  
-                </span>
-              </div>
+            <div class="card-group">
+              <div class="card text-dark bg-light" style="width: 18rem;">
+                <div class="card-body py-5">
+                  <h5 class="card-title">Group {{ group.group_name }} kategory "{{ group.kategory }} "</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Date begin : {{ group.group_date_begin|date:"d.m.Y" }}</li>
+                  <li class="list-group-item">Date end : {{ group.group_date_end|date:"d.m.Y" }}</li>
+                  <li class="list-group-item">price : {{ group.price }} UAH</li>
+                  <li class="list-group-item">Time learning : {{ group.time_study }} h</li>
+                </ul>
+                <div class="card-footer d-flex ">
+                  <span class="ms-auto"> View Details </span>
+                  <span class="ms-auto">
+                    <a href="{% url 'students' group.id %}" class="card-link"><i class="bi bi-chevron-right "></i></a>
+                    
+                  </span>
+                </div>
             </div>
+          </div>
           </div>
           {% endfor %}
         </div>

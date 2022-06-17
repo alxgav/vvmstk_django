@@ -34,7 +34,7 @@ class StudentsAdmin(admin.ModelAdmin):
 
     fieldsets = (
         (None, {
-            'fields':('surname', 'firstname', 'middlename'),
+            'fields':('surname', 'firstname', 'middlename', 'id_groups'),
         }),
         (_('common information'), {
             'fields':('birth_date', 'inn_code', 'birthplace', 'address')
