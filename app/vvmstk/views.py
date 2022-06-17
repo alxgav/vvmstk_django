@@ -18,6 +18,7 @@ class GroupsListView(ListView):
     model = Groups_students
     context_object_name = 'groups'
     template_name = 'vvmstk/groups.html'
+    paginate_by = 8
 
     # def get_quertyset(self):
     #     return Groups_students.objects.all()
@@ -26,6 +27,7 @@ class GroupsListView(ListView):
         context = super().get_context_data(**kwargs)
         # context['now'] = '4'
         return context
+    
         
 
 # class StudentListView(ListView):
